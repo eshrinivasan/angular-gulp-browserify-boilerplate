@@ -34,14 +34,13 @@
 // @ngInject
 module.exports = function () {
     return {
-        restrict: 'EA',
-        templateUrl: 'public/resources/angular-sap-ui-elements/ui-elements/ui-grid/gridcolumns/grid.columns.template.html',
-        replace: true,
+        restrict: 'E',
+        templateUrl: 'app/ui-grid/gridcolumns/grid.columns.template.html',
         link: function (scope, element, attrs) {
             console.log('linked Grid Columns');
         },
         controller: ['$scope', function ($scope) {
-            
+            console.log('calling Grid Columns');
         }]
     };
 };

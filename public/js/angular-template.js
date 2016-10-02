@@ -8,5 +8,7 @@ app.run(["$templateCache", function($templateCache) {
 $templateCache.put("app/ui-grid/grid.template.html","<div class=\"grid\">\n" +
     "	{{onthescreen}}\n" +
     "</div>")
+
+$templateCache.put("app/ui-grid/gridcolumns/grid.columns.template.html","<div class=\"ui-gridcolumns\">grid columns</div>")
 }]);
 })();

@@ -1,16 +1,7 @@
 'use strict';
 
-//require('./gridcolumns');
-/*
-require('./gridcolumn');
-require('./gridrows');
-*/
+require('./gridcolumns');
 
 // @ngInject
-angular.module('common.ui.elements.uiGrid', [])
+angular.module('common.ui.elements.uiGrid', ['common.ui.elements.uiGrid.uiGridcolumns'])
     .directive('uiGrid', require('./grid.directive.js'));
-
-/*
-['common.ui.elements.uiGrid.gridcolumns']
-,'common.ui.elements.uiGrid.uiGridcolumn',
-	'common.ui.elements.uiGrid.uiGridrows'*/

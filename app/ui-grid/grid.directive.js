@@ -35,7 +35,6 @@ module.exports = function () {
     return {
         restrict: 'E',
         templateUrl: 'app/ui-grid/grid.template.html',
-        replace: true,
         link: function (scope, element, attrs) {
             console.log('linked Grid');
         },

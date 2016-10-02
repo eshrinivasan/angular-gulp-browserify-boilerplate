@@ -35,7 +35,7 @@ gulp.task('watch', function() {
 })
 
 gulp.task('templates', function () {
-    gulp.src('app/ui-grid/*.html')
+    gulp.src('app/ui-grid/**/*.html')
        .pipe(html2js('angular-template.js', {
             adapter: 'angular',
             name: 'angular-demo'

@@ -11,7 +11,7 @@ app.controller('MainController', ['$scope', MainController])
 	        var templatesHTML = $templateCache.get('app.templates');
 	        $compile(templatesHTML)($rootScope); 
 	    });
-},{"./controllers/MainController":2,"./ui-grid":4,"angular":6}],2:[function(require,module,exports){
+},{"./controllers/MainController":2,"./ui-grid":6,"angular":8}],2:[function(require,module,exports){
 module.exports = function($scope) {
 	$scope.message = 'Two birds killed with one stone!'
 }
@@ -53,7 +53,6 @@ module.exports = function () {
     return {
         restrict: 'E',
         templateUrl: 'app/ui-grid/grid.template.html',
-        replace: true,
         link: function (scope, element, attrs) {
             console.log('linked Grid');
         },
@@ -66,21 +65,67 @@ module.exports = function () {
 },{}],4:[function(require,module,exports){
 'use strict';
 
-//require('./gridcolumns');
-/*
-require('./gridcolumn');
-require('./gridrows');
-*/
+
+/**
+ * @ngdoc directive
+ * @name ui.elements:uiGrid
+ *
+ * @description
+ * Wrapper for a grid in a table format.
+ *
+ * @restrict E
+ * @element ANY
+ *
+ * @param {string} selectedTab the currently selected tab.
+ *
+  @example
+ *
+ *
+ <doc:example>
+ <doc:source>
+ <ui-grid resource="/api/data.json">
+    <ui-grid-columns>
+        <ui-grid-column></ui-grid-column>
+        <ui-grid-column></ui-grid-column>
+        <ui-grid-column></ui-grid-column>
+    </ui-grid-columns>
+    <ui-grid-rows with-inline-editor></ui-grid-rows>
+</ui-grid>
+ </doc:source>
+ </doc:example>
+ *
+ */
 
 // @ngInject
-angular.module('common.ui.elements.uiGrid', [])
+module.exports = function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'app/ui-grid/gridcolumns/grid.columns.template.html',
+        link: function (scope, element, attrs) {
+            console.log('linked Grid Columns');
+        },
+        controller: ['$scope', function ($scope) {
+            console.log('calling Grid Columns');
+        }]
+    };
+};
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
+// @ngInject
+module.exports = angular.module('common.ui.elements.uiGrid.uiGridcolumns', [])
+    .directive('uiGridcolumns', require('./grid.columns.directive.js'));
+},{"./grid.columns.directive.js":4}],6:[function(require,module,exports){
+'use strict';
+
+require('./gridcolumns');
+
+// @ngInject
+angular.module('common.ui.elements.uiGrid', ['common.ui.elements.uiGrid.uiGridcolumns'])
     .directive('uiGrid', require('./grid.directive.js'));
 
-/*
-['common.ui.elements.uiGrid.gridcolumns']
-,'common.ui.elements.uiGrid.uiGridcolumn',
-	'common.ui.elements.uiGrid.uiGridrows'*/
-},{"./grid.directive.js":3}],5:[function(require,module,exports){
+},{"./grid.directive.js":3,"./gridcolumns":5}],7:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -31849,8 +31894,8 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":5}]},{},[1]);
+},{"./angular":7}]},{},[1]);
