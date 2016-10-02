@@ -3,6 +3,8 @@ var sass = require('gulp-ruby-sass')
 var connect = require('gulp-connect')
 var browserify = require('browserify')
 var source = require('vinyl-source-stream')
+/*var concat = require('gulp-concat');*/
+var html2js = require('gulp-html2js');
 
 gulp.task('connect', function () {
 	connect.server({
@@ -26,9 +28,19 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest('public/css'))
 })
 
+
 gulp.task('watch', function() {
 	gulp.watch('app/**/*.js', ['browserify'])
 	gulp.watch('sass/style.sass', ['sass'])
 })
 
-gulp.task('default', ['connect', 'watch'])
+gulp.task('templates', function () {
+    gulp.src('app/ui-grid/*.html')
+       .pipe(html2js('angular-template.js', {
+            adapter: 'angular',
+            name: 'angular-demo'
+        }))
+        .pipe(gulp.dest('public/js/'));
+});
+
+gulp.task('default', ['connect','templates','watch'])
