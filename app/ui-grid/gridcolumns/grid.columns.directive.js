@@ -35,6 +35,7 @@
 module.exports = function () {
     return {
         restrict: 'E',
+        replace: true,
         templateUrl: 'app/ui-grid/gridcolumns/grid.columns.template.html',
         link: function (scope, element, attrs) {
             console.log('linked Grid Columns');

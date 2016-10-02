@@ -52,12 +52,13 @@ module.exports = function($scope) {
 module.exports = function () {
     return {
         restrict: 'E',
+        transclude: true,
         templateUrl: 'app/ui-grid/grid.template.html',
         link: function (scope, element, attrs) {
             console.log('linked Grid');
         },
         controller: ['$scope', function ($scope) {
-            $scope.onthescreen = 'test value';   
+            $scope.onthescreen='test value';   
         }]
     };
 };
@@ -100,6 +101,7 @@ module.exports = function () {
 module.exports = function () {
     return {
         restrict: 'E',
+        replace: true,
         templateUrl: 'app/ui-grid/gridcolumns/grid.columns.template.html',
         link: function (scope, element, attrs) {
             console.log('linked Grid Columns');

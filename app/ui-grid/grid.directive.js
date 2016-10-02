@@ -34,12 +34,13 @@
 module.exports = function () {
     return {
         restrict: 'E',
+        transclude: true,
         templateUrl: 'app/ui-grid/grid.template.html',
         link: function (scope, element, attrs) {
             console.log('linked Grid');
         },
         controller: ['$scope', function ($scope) {
-            $scope.onthescreen = 'test value';   
+            $scope.onthescreen='test value';   
         }]
     };
 };

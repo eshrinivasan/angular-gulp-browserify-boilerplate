@@ -5,7 +5,7 @@ catch(err) { app = angular.module("angular-demo", []); }
 app.run(["$templateCache", function($templateCache) {
 "use strict";
 
-$templateCache.put("app/ui-grid/grid.template.html","<div class=\"grid\">\n" +
+$templateCache.put("app/ui-grid/grid.template.html","<div class=\"grid\" ng-transclude>\n" +
     "	{{onthescreen}}\n" +
     "</div>")
 

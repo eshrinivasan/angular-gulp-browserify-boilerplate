@@ -5,6 +5,17 @@ var browserify = require('browserify')
 var source = require('vinyl-source-stream')
 /*var concat = require('gulp-concat');*/
 var html2js = require('gulp-html2js');
+var eslint = require('gulp-eslint');
+
+gulp.task('eslint', function () {
+    return gulp
+        .src([
+            'app/ui-grid/**/*.js'
+        ])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failOnError());
+});
 
 gulp.task('connect', function () {
 	connect.server({
@@ -13,7 +24,7 @@ gulp.task('connect', function () {
 	})
 })
 
-gulp.task('browserify', function() {
+gulp.task('browserify', ['eslint'], function() {
 	// Grabs the app.js file
     return browserify('./app/app.js')
     	// bundles it and creates a file called main.js
